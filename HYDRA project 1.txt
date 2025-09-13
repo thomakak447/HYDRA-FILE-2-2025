@@ -1,0 +1,8 @@
+noise(2)
+  .scale(0.01)
+  .blend(shape(4,5,0)).thresh(.4,.05).pixelate(64).colorama(25).modulateRepeat(osc(6),2,3,6)//.modulateScale(1.5,.05)
+  //.modulatePixelate(.02.,.25)
+  .mask(shape(3,.25,0.001))
+  
+  
+  .out()

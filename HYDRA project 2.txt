@@ -1,0 +1,25 @@
+
+noise(2)
+  .scale(0.01)
+  .blend(shape(4,5,0)).thresh(.4,.05).pixelate(64)
+  .colorama(25)
+  .modulateRepeat(osc(6),2,3,6)
+  .kaleid(3).scale(1,0.5,width/height).rotate(Math.PI/2).rotate(Math.PI/1)//.rotate(0.25)
+//.modulateScale(2.5,0.5,0)//.rotate(Math.PI/4)
+.modulateScale(osc(1.5,[0.25,0.5,0.75,1]))
+.diff(src(o0).scroll(0.1,0.05)).mask(shape(3,.25,0.001).rotate(Math.PI/12))
+.blend(noise(2)
+  .scale(0.01)
+  //suckmybals
+  .blend(shape(4,5,0)).thresh(.4,.05).pixelate(64)
+  .colorama(25)
+  .modulateRepeat(osc(6),2,3,6)
+  .kaleid(3).scale(1,0.5,width/height).rotate(Math.PI/2).rotate(Math.PI/1)//.rotate(0.25)
+//.modulateScale(2.5,0.5,0)//.rotate(Math.PI/4)
+.modulateScale(osc(1.5,[0.25,0.5,0.75,1]))
+.diff(src(o0).scroll(0.1,0.05))).invert().diff(noise(4).pixelate(4))
+
+
+  //.modulatePixelate(.02.,.25)
+  //.mask(noise(3,.25,0.001))
+.out()
