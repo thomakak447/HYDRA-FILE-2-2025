@@ -1,0 +1,25 @@
+const { sculptToHydraRenderer } = await import(
+  "https://unpkg.com/shader-park-core/dist/shader-park-core.esm.js"
+);
+ 
+sculptToHydraRenderer(() => {
+
+
+let s = getSpace();
+let scale = .2;
+let amplitude = .9;
+let speed = 0.1 * time;
+  let n = noise(s * amplitude + speed) * 0.5
+        + noise(s * amplitude * 2.0 + speed * 1.5) * 0.25
+        + noise(s * amplitude * 4.0 + speed * 3.0) * 0.125;
+
+  union();
+  metal(5);
+  shine(8);
+  color(4,1.2,3);
+
+  sphere(0.25); expand(n);
+  
+  color(0,4,3)
+  box(0.2, 0.2, 0.2)
+}).out(o0);
