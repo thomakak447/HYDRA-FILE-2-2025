@@ -1,0 +1,37 @@
+const { sculptToHydraRenderer } = await import(
+  "https://unpkg.com/shader-park-core/dist/shader-park-core.esm.js"
+);
+ 
+sculptToHydraRenderer(() => {
+
+
+let s = getSpace();
+let scale = .2;
+let amplitude = 3;
+let speed = 0.1 * time;
+  let pixelSize = 0.8;
+
+  // Pixelisation de l'espace
+  let p = floor(s / pixelSize) * pixelSize;
+
+  // Noise fractal simple
+  let n = noise(p + time*0.02) * 0.5;
+  
+  
+  //  let n = noise(s * amplitude + speed) * 0.5
+      //  + noise(s * amplitude * 2.0 + speed * 1.5) * 0.25
+        //+ noise(s * amplitude * 4.0 + speed * 3.0) * 0.125;
+let numPoints = input(20, 0, 75);
+let distro = sphericalDistribution(s, numPoints);
+ 
+  
+  union();
+  metal(7);
+  shine(10);
+  color(4,1.2,3);
+
+  sphere(0.25);expand(n); + p ;
+
+  color(0,4,0.5)
+  box(0.2, 0.2, -2);+ n;+ p ;
+}).out(o0)
