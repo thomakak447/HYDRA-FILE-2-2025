@@ -1,0 +1,42 @@
+//left shape 
+s0.initImage("https://images.unsplash.com/photo-1517328894681-0f5dfabd463c?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=764")
+s1.initImage("https://images.unsplash.com/photo-1542747527-122025b13094?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MzZ8fHVyYmFpbnxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&q=60&w=500")
+
+
+gradient(40,0.25,0)
+.scrollX(-.7)
+.scrollY(.17)  
+  
+//stairs shape 
+.add(gradient(150,0.125,0).color(1,1,1).layer(gradient(.00005)
+.colorama([-7.5,7.4,-25,12.5])
+.posterize(25,7.5,.01,-12.5).saturate(5).luma(.3,0)).rotate(Math.PI/2)
+.scrollX(.7)
+.scrollY(-.17))
+  
+.add(src(s0)//(shape(4,0.125,0)
+.scrollX(.72)
+.scrollY(-.192))  
+  
+.add(voronoi(50,0.125,0)
+.scrollX(.74)
+.scrollY(-.214))
+  
+.add(gradient(130,0.125,0).layer(gradient(.00005)
+.colorama([-7.5,7.4,-25,12.5])
+.posterize(25,7.5,.01,-12.5)
+.saturate(5).luma(.3,0))
+.rotate(Math.PI/2)
+.scrollX(.76,0.02)
+.scrollY(-.236,.02)) 
+ //.diff(src(s0).scale(1.8))
+	//.modulateScale(osc(2).modulateRotate(o0,.74))   
+.add(s1)//(shape(50,0.125,0)
+.color(1,1,1).layer(gradient(.00005)
+.colorama([12.5,7.4,-25,25])
+.posterize(-25,7.5,.01,-12.5).saturate(5).luma(.3,0)).rotate(Math.PI/2)
+.scrollX(.78)
+.scrollY(-.258)
+.modulateKaleid(osc(-0.76),0.5,.05).diff(noise(6).blend(voronoi(8).thresh(0.05,0.5).modulatePixelate(6,.05))).scrollX(0.5,0)
+  
+  .out()

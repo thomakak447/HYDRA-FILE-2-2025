@@ -1,0 +1,28 @@
+//left shape 
+shape(4,0.25,0)
+.scrollX(-.7)
+.scrollY(.17)  
+  
+//stairs shape 
+.add(shape(50,0.125,0).color(1,1,1).layer(gradient(.00005).colorama([-7.5,7.4,-25,12.5]).posterize(25,7.5,.01,-12.5).saturate(5).luma(.3,0)).rotate(Math.PI/2)
+.scrollX(.7)
+.scrollY(-.17))
+  
+.add(shape(4,0.125,0)
+.scrollX(.72)
+.scrollY(-.192))  
+  
+.add(shape(50,0.125,0)
+.scrollX(.74)
+.scrollY(-.214))    
+  
+.add(shape(4,0.125,0)
+.scrollX(.76)
+.scrollY(-.236))    
+    
+.add(shape(50,0.125,0).color(1,1,1).layer(gradient(.00005).colorama([-12.5,7.4,-25,25]).posterize(-25,7.5,.01,-12.5).saturate(5).luma(.3,0)).rotate(Math.PI/2)
+.scrollX(.78)
+.scrollY(-.258))   
+  
+  
+  .out()

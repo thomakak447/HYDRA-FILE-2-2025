@@ -1,0 +1,11 @@
+shape(3,0.125,0).scrollX(0.75)
+.add(shape(3,0.125,0).scrollX(0.75).scrollY(0.25))
+.add(gradient(3,0.125,0).scrollX(0.75).scrollY(0.75))
+.add(noise(3,0.125,0).rotate(Math.PI/2).scrollX(-0.75).scrollY(-0.75))
+.add(noise(3,0.125,0).rotate(Math.PI/2).scrollX(-0.75).scrollY(-0.25)).posterize(14,14).saturate(50)//.modulateHue(3)  
+.add(noise(3,0.125,0).rotate(Math.PI/2).scrollX(-0.75).scrollY(-0.125)).modulateHue(src(o0)).blend(osc(8).scale(10).blend(gradient(15,0.5).colorama(4,10)))
+.add(shape(100,0.25,0))
+  
+  
+  
+.out(o0)
