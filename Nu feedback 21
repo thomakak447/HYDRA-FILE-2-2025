@@ -1,0 +1,13 @@
+gradient([10,0.5,2]).layer(gradient(.005).colorama([-2.5,22.4,-2.5,12.5]).posterize(-25,-7.5,.01,-12.5).saturate(5).luma(.3,0)).rotate(Math.PI/2)
+  //.blend(shape(4,0.32,0)).scrollX(0.06)
+   .blend(src(o0).scrollX(.02))
+   .mult(src(o0).thresh(-0.02,0.0005))//.scrollX(.018)).rotate(Math.PI/2).modulateRotate(osc(1,0.5,0))
+
+
+//.invert(2)
+  
+  
+  .out(o0)
+
+
+//.mult(src(o1).scrollX(0.02)).out(o2)//-12.5,025,0.01,-12.5
