@@ -1,0 +1,15 @@
+vidRecorder.start()
+
+gradient(3,0.5,0.1).blend(noise(36,0.05,-0.001).add(shape(100,0.5,0)).pixelate(3,3,0.05).thresh(-0.002,0.0005)
+  //.mult(noise(24,0.002,-12.5))//MODS
+  .modulatePixelate(noise(3 ,1).pixelate(3,3,0.5,-0.005)))
+ // .rotate(5,-0.025,0.2) //MODS
+  .blend(src(o0).rotate( () => time%0.005 ))
+         .invert(-0.165)//.rotate(-5,-0.025,0.002))  //MOD-0.65
+  .diff(src(o0)
+       .thresh(0.009,0.56) //change me
+       .posterize([2.2,17,8,0.035],-10.2).colorama([-40,-0.02,0.25,0.0005],0.001).scrollX(() => Math.sin(time * 0.00005) * 0.002)
+       .scrollY(() => Math.cos(time * 0.5) * 0.002)).saturate( () => Math.sin(time) * 0.5 )
+//.diff(src(o0).rotate(Math.PI/4)).thresh( ()=>Math.sin(time/2) , [-0.04,-0.25,-0.275,0.25].fast(0.025) )
+  .thresh(0.23,-0.06,-0.0025)//.invert([-0.165,0.005,-0.002,-0.5],-0.0001)
+  .out(o0)
