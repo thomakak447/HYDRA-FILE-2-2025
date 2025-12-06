@@ -1,0 +1,78 @@
+const { sculptToHydraRenderer } = await import(
+  "https://unpkg.com/shader-park-core/dist/shader-park-core.esm.js"
+);
+ 
+sculptToHydraRenderer(() => {
+
+
+let s = getSpace();
+let scale = .2;
+let amplitude = -1.5;
+let speed = 0.1 * time;
+  let pixelSize = 0.62;
+
+  // Pixelisation de l'espace
+  let p = floor(s / pixelSize) * pixelSize;
+
+  // Noise fractal simple
+  let n = noise(p + time*0.02) * -3.22;
+  
+  
+  //  let n = noise(s * amplitude + speed) * 0.5
+      //  + noise(s * amplitude * 2.0 + speed * 1.5) * 0.25
+        //+ noise(s * amplitude * 4.0 + speed * 3.0) * 0.125;
+let numPoints = input(20, 2.5, 75);
+let distro = sphericalDistribution(s, numPoints);
+ 
+  
+  union();
+  metal(7);
+  shine(10);
+  color(0.5,3.2,0.5);
+
+
+displace(0.3,0.2,0);sphere(0.25);expand(n); + p ;
+
+  
+  metal(4.2);
+  shine(3.3);
+  color(0,4,0.5);
+ displace(0.3,0.2,0);
+  box(0.2, 0.2, -2);+ n;+ p ;
+}).out(o2)
+
+
+
+vidRecorder.start()
+
+voronoi(1.5,0.5,0.1).pixelate(12).blend(noise(-16,0.05,-0.001).add(shape(100,0.5,0))
+.pixelate(3,3,0.05)
+.thresh(-0.2,0.0005)
+  //.mult(noise(24,0.002,-12.5))//MODS
+  .modulatePixelate(noise(3 ,1).pixelate(3,3,0.5,-0.005)))
+ // .rotate(5,-0.025,0.2) //MODS
+  .blend(src(o2).rotate( () => time%0.005 ))
+         .invert(-0.165)//.rotate(-5,-0.025,0.002))  //MOD-0.65
+  .diff(src(o0)
+       .thresh(0.009,0.56) //change me
+       .posterize([2.2,17,8,0.035],-10.2).colorama([-40,-0.02,0.25,0.0005],0.001).scrollX(() => Math.sin(time * 0.00005) * 0.002)
+       .scrollY(() => Math.cos(time * 0.5) * 0.002)).saturate( () => Math.sin(time) * 0.5 )
+//.diff(src(o0).rotate(Math.PI/4)).thresh( ()=>Math.sin(time/2) , [-0.04,-0.25,-0.275,0.25].fast(0.025) )
+  .thresh(0.28,-0.06,-0.0025).hue(10,2,0.5).posterize(12)//.invert([-0.165,0.005,-0.002,-0.5],-0.0001)
+  
+  
+
+
+  .out(o0) 
+ src(o0) .modulateHue(src(o0).scale(1.01),1)
+  .layer(osc(4,0.5,2).modulateRotate(0.25).mask(shape(4,0.5,0.001))).invert()
+ // .blend(src(o0).scrollX(.02))
+   
+   
+   
+   .out(o1)
+
+  //setResolution(480, 270)
+   // setResolution(640, 360)
+  //  setResolution(854, 480)
+    setResolution(960, 540)
